@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<ul class="address">
+  <li><%= Address::VOTER_NAMES.sample %>
+  <% @address.address.split(/\n/).each do |line| %>
+    <li><%= line %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Completed!', completed_address_path(@address) %> |
+<%= link_to 'Put back in the pool', uncompleted_address_path(@address) %>
+
+<hr class="pre-note" />
+
+<p><strong style="color: red">Important:</strong> Make sure you click "Completed!" or,
+  if you can't complete it, click "Put back in pool" so it is available for someone else to complete.</p>
