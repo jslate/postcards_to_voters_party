@@ -12,6 +12,4 @@ test:
 
 production:
   <<: *default
-  database: postcards_to_voters_party_production
-  username: postcards
-  password: <%= ENV['POSTCARDS_DATABASE_PASSWORD'] %>
+  database: <%= DATABASE_URL %>
