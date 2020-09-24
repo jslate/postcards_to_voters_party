@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   root 'welcome#main'
+  post '/authenticate', to: "welcome#authenticate"
+  get '/logout', to: "welcome#logout"
 
   resources :addresses do
     member do

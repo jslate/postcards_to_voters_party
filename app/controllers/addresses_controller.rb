@@ -1,5 +1,10 @@
 class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy, :completed, :uncompleted]
+  before_action :check_authentication
+
+  def check_authentication
+    redirect_to root_path unless session[:authenticated].present?
+  end
 
   def next
     @address = Address.available.first

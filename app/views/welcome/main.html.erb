@@ -1,3 +1,7 @@
 <h1>Welcome!</h1>
 
-To get started you can get <%= link_to 'a new address', next_addresses_path %>.
+To get started you can get enter the password:
+
+<%= form_tag(authenticate_path) do %>
+  <%= password_field_tag 'pass' %> <%= submit_tag "Submit" %>
+<% end %>
