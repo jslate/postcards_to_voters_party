@@ -3,3 +3,9 @@ development:
   database: postcards_to_voters_party_development
   encoding: utf8
   min_messages: warning
+
+production:
+  adapter: postgresql
+  database: postcards_to_voters_party_production
+  encoding: utf8
+  min_messages: warning
