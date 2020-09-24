@@ -11,7 +11,7 @@ module PostcardsToVotersPary
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
-    config.hosts << "zoom-postcards-party.herokuapp.com"
+    config.hosts << "protected-anchorage-67186.herokuapp.com"
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
