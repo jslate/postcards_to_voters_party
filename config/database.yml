@@ -1,11 +1,17 @@
-development:
+default: &default
   adapter: postgresql
+  encoding: unicode
+
+development:
+  <<: *default
   database: postcards_to_voters_party_development
-  encoding: utf8
-  min_messages: warning
+
+test:
+  <<: *default
+  database: postcards_to_voters_party_test
 
 production:
-  adapter: postgresql
+  <<: *default
   database: postcards_to_voters_party_production
-  encoding: utf8
-  min_messages: warning
+  username: postcards
+  password: <%= ENV['POSTCARDS_DATABASE_PASSWORD'] %>
