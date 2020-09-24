@@ -1,5 +1,26 @@
 <p id="notice"><%= notice %></p>
 
+<h2>Campaign:</strong> <%= @address.campaign.name %></h2>
+
+<p><a href="#" class="show_hide" id="show_hide">▶ Show full text</a></p>
+<div id="full_text" class="full_text" style="display: none"><span class="content"><%= @address.campaign.full_text %></span></div>
+
+<h3>Required points</h3>
+
+<ul class="required_instructions">
+  <% @address.campaign.required_instructions.each do |instruction| %>
+    <li><%= instruction %></li>
+  <% end %>
+</ul>
+
+<h3>Optional points</h3>
+
+<ul class="optional_instructions">
+  <% @address.campaign.optional_instructions.each do |instruction| %>
+    <li><%= instruction %></li>
+  <% end %>
+</ul>
+
 <ul class="address">
   <li><%= Address::VOTER_NAMES.sample %>
   <% @address.address.split(/\n/).each do |line| %>
@@ -7,8 +28,8 @@
   <% end %>
 </ul>
 
-<%= link_to 'Completed!', completed_address_path(@address) %> |
-<%= link_to 'Put back in the pool', uncompleted_address_path(@address) %>
+<%= link_to 'Mark Completed', completed_address_path(@address), class: :button %>
+<%= link_to 'Put back in the pool', uncompleted_address_path(@address), class: :button %>
 
 <hr class="pre-note" />
 

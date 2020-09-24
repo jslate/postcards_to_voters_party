@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_20_133027) do
+ActiveRecord::Schema.define(version: 2020_09_20_191818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
 # Could not dump table "addresses" because of following StandardError
 #   Unknown type 'address_status' for column 'status'
+
+  create_table "campaigns", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "required_instructions", default: [], null: false, array: true
+    t.string "optional_instructions", default: [], null: false, array: true
+    t.text "full_text"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
 end
