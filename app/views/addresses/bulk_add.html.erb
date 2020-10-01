@@ -1,0 +1,24 @@
+<%if @confirm %>
+  <strong>Addresses added</strong>
+<% else %>
+  Please review the information below.
+  <%= form_tag(bulk_add_addresses_path) do %>
+    <%= hidden_field_tag 'campaign_id', @campaign_id %>
+    <%= hidden_field_tag 'text', @text %>
+    <%= hidden_field_tag 'confirm', true %>
+    <%= submit_tag "Confirm" %>
+  <% end %>
+<% end %>
+
+
+
+<p>Campaign: <%= Campaign.find(@campaign_id).name %></p>
+
+<p>Addresses:</p>
+
+<% @addresses.each.with_index do |address, i| %>
+  <div class="full_text bulk_add">
+    <div class="number">#<%= i + 1 %></div>
+    <div class="content"><%= address %></div>
+  </div>
+<% end %>

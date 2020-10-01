@@ -6,6 +6,19 @@ class AddressesController < ApplicationController
     redirect_to root_path unless session[:authenticated].present?
   end
 
+  def add_from_text
+  end
+
+  def bulk_add
+    @campaign_id = params.fetch(:campaign_id)
+    @text = params.fetch(:text)
+    @addresses = @text.split(/\s*- - -s*/).map(&:strip).reject do |str|
+      str.blank? || str.starts_with?("Writing for")
+    end
+    @confirm = params.fetch(:confirm, false)
+    @addresses.each { |address| Address.create(address: address, campaign_id: @campaign_id) } if @confirm
+  end
+
   def next
     @address = Address.available.first
     if @address.present?

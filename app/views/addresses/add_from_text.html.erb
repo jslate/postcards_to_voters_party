@@ -1,0 +1,11 @@
+<%= form_tag(bulk_add_addresses_path) do %>
+  <p><label>Campaign:<br />
+    <%= select_tag 'campaign_id', options_from_collection_for_select(Campaign.all, 'id', 'name') %>
+  </label></p>
+  <p><lable>Address text:<br />
+  <%= text_area_tag 'text' %>
+  </label>
+  </p>
+
+  <%= submit_tag "Submit" %>
+<% end %>

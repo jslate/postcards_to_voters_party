@@ -33,6 +33,12 @@ h3 {
   .content {
     white-space: pre-wrap;
   }
+  .number {
+    float: right;
+  }
+  &.bulk_add {
+    margin: 10px 0;
+  }
 }
 
 a.show_hide, a.show_hide:visited {
