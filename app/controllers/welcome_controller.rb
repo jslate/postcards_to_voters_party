@@ -3,7 +3,7 @@ class WelcomeController < ApplicationController
   end
 
   def authenticate
-    if (params[:pass] == 'flipitgood')
+    if (params[:pass] == ENV.fetch("THINGY"))
       session[:authenticated] = true
       redirect_to next_addresses_path
     else
