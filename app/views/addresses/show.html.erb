@@ -36,4 +36,11 @@
 <p><strong style="color: red">Important:</strong> Make sure you click "Completed!" or,
   if you can't complete it, click "Put back in pool" so it is available for someone else to complete.</p>
 
+<div class="stats">
+  <span>Available: <%= Address.available.count %></span>
+  <span>Completed: <%= Address.completed.count %></span>
+  <span>Completed today: <%= Address.where("updated_at > ?", Date.today).completed.count %></span>
+  <span>In use: <%= Address.in_use.count %></span>
+</div>
+
 <%= link_to 'Logout', logout_path %>
