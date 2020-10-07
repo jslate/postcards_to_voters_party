@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Campaign: <%= @campaign.name %></h2>
+
+
+<h3>Required points</h3>
+
+<ul class="required_instructions">
+  <% @campaign.required_instructions.each do |instruction| %>
+    <li><%= instruction %></li>
+  <% end %>
+</ul>
+
+<h3>Optional points</h3>
+
+<ul class="optional_instructions">
+  <% @campaign.optional_instructions.each do |instruction| %>
+    <li><%= instruction %></li>
+  <% end %>
+</ul>
+
+<p><%= @campaign.full_text %></p>
+
+<%= link_to 'Logout', logout_path %>

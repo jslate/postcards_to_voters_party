@@ -10,11 +10,14 @@ Rails.application.routes.draw do
       get :uncompleted
     end
     collection do
+      get :add_from_text
+      get :get_an_address
       get :next
       get :none_left
-      get :add_from_text
       post :bulk_add
     end
   end
+
+  resources :campaigns
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

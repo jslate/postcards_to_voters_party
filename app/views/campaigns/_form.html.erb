@@ -1,0 +1,31 @@
+<%= form_with(model: campaign, local: true) do |form| %>
+  <% if campaign.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(campaign.errors.count, "error") %> prohibited this campaign from being saved:</h2>
+
+      <ul>
+        <% campaign.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p><label><%= form.text_field :name %></label></p>
+
+  <p>Required instructions</p>
+  <p><label><%= text_field_tag "campaign[required_instructions][]" %></label></p>
+  <p><label><%= text_field_tag "campaign[required_instructions][]" %></label></p>
+  <p><label><%= text_field_tag "campaign[required_instructions][]" %></label></p>
+
+  <p>Optional instructions</p>
+  <p><label><%= text_field_tag "campaign[optional_instructions][]" %></label></p>
+  <p><label><%= text_field_tag "campaign[optional_instructions][]" %></label></p>
+  <p><label><%= text_field_tag "campaign[optional_instructions][]" %></label></p>
+
+  <p><label><%= form.text_area :full_text %></label></p>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

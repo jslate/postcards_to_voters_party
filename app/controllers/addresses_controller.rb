@@ -1,10 +1,7 @@
 class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy, :completed, :uncompleted]
-  before_action :check_authentication
-
-  def check_authentication
-    redirect_to root_path unless session[:authenticated].present?
-  end
+  before_action :check_user_authentication, except: [:add_from_text, :bulk_add]
+  before_action :check_admin_authentication, only: [:add_from_text, :bulk_add]
 
   def add_from_text
   end
@@ -39,6 +36,9 @@ class AddressesController < ApplicationController
   end
 
   def none_left
+  end
+
+  def get_an_address
   end
 
   # GET /addresses
