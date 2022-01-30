@@ -1,5 +1,6 @@
 class Address < ApplicationRecord
   belongs_to :campaign
+  belongs_to :in_use_user, class_name: 'User'
 
   enum status: { available: "available", in_use: "in_use", completed: "completed" }
 

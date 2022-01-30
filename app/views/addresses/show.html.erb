@@ -42,5 +42,3 @@
   <span>Completed today: <%= Address.where("updated_at > ?", Date.today).completed.count %></span>
   <span>In use: <%= Address.in_use.count %></span>
 </div>
-
-<%= link_to 'Logout', logout_path %>

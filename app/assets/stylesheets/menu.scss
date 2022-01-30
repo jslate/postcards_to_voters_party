@@ -1,0 +1,13 @@
+.menu {
+  display: flex;
+  margin-top: 50px;
+
+  a {
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    padding: 3px 10px;
+    margin-right: 10px;
+    text-decoration: none;
+  }
+}

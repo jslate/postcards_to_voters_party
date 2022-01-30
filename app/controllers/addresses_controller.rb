@@ -1,7 +1,6 @@
 class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy, :completed, :uncompleted]
-  before_action :check_user_authentication, except: [:add_from_text, :bulk_add]
-  before_action :check_admin_authentication, only: [:add_from_text, :bulk_add]
+  before_action :require_admin, except: [:next, :completed, :uncompleted, :none_left, :get_an_address, :show]
 
   def add_from_text
   end
@@ -19,7 +18,10 @@ class AddressesController < ApplicationController
   def next
     @address = Address.available.first
     if @address.present?
-      @address.update!(status: :in_use)
+      @address.update!(
+        status: :in_use,
+        in_use_user: Current.user,
+      )
       redirect_to address_path(@address)
     else
       redirect_to none_left_addresses_path
@@ -32,7 +34,7 @@ class AddressesController < ApplicationController
   end
 
   def uncompleted
-    @address.update(status: :available)
+    @address.update(in_use_user: nil, status: :available)
   end
 
   def none_left

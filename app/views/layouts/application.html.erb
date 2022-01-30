@@ -17,5 +17,14 @@
       </div>
     <% end %>
     <%= yield %>
+
+    <p class="menu">
+      <% if Current.user.present? %>
+        <%= link_to 'Dashboard', dashboard_path, method: :get %>
+        <%= link_to 'Logout', '/auth/logout', method: :get %>
+      <% else %>
+        <%= button_to 'Login', '/auth/auth0', method: :post %>
+      <% end %>
+    </p>
   </body>
 </html>
