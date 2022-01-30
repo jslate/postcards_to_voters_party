@@ -2,3 +2,7 @@ development:
   auth0_domain: dev-a9yemkn5.us.auth0.com
   auth0_client_id: 0TTLRo3DlJtc7UEfq4MpSKKQO1Zo17g0
   auth0_client_secret: <%= ENV['AUTH0_CLIENT_SECRET'] %>
+production:
+  auth0_domain: dev-a9yemkn5.us.auth0.com
+  auth0_client_id: 0TTLRo3DlJtc7UEfq4MpSKKQO1Zo17g0
+  auth0_client_secret: <%= ENV['AUTH0_CLIENT_SECRET'] %>
