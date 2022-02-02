@@ -16,7 +16,8 @@ class AddressesController < ApplicationController
   end
 
   def next
-    @address = Address.available.first
+    @address = Address.in_use.find_by(in_use_user: Current.user)
+    @address ||= Address.available.first
     if @address.present?
       @address.update!(
         status: :in_use,

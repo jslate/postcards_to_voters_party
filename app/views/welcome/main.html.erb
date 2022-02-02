@@ -1,1 +1,31 @@
-<h1>Welcome!</h1>
+<% if Current.user&.active? %>
+  <h1>Thank you for writing postcards to voters!</h1>
+
+  <p>Please remeber:</p>
+
+  <ul>
+    <li>Always include all three required points on each postcard.</li>
+    <li>Never include personal information like your full name, social media accounts, phone numbers, etc.</li>
+    <li>Keep it positive!</li>
+  </ul>
+
+  <p>So what are you waiting for...</p>
+
+  <p class="menu">
+    <%= link_to 'Get a new address', next_addresses_path, class: :button %>
+  </p>
+<% elsif Current.user.present? %>
+  <h1>Thank you volunteering to write postcards to voters!</h1>
+
+  <p>Your account is pending. Please contact Jonathan to have your account activated.</p>
+<% else %>
+  <h1>Thank you volunteering to write postcards to voters!</h1>
+
+  <p>Please use the button below to login or sign up.</p>
+
+  <p class="menu">
+    <%= form_tag('/auth/auth0', method: :post, id: 'login-form') do %>
+      <%= link_to('Login or sign up', '/auth/auth0', class: :button, id: 'login-button') %>
+    <% end %>
+  </p>
+<% end %>

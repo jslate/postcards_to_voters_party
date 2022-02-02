@@ -10,3 +10,11 @@ document.getElementById("show_hide")?.addEventListener("click", (e) => {
     linkElement.innerHTML = "▶ Show full text"
   }
 });
+
+const loginButton = document.getElementById('login-button');
+if (loginButton) {
+  loginButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    document.getElementById('login-form').submit();
+  })
+}

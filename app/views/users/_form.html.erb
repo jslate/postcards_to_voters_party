@@ -17,11 +17,17 @@
   </div>
 
   <div>
-    <%= form.label :role, style: "display: block" %>
-    <%= form.text_field :role %>
+    <%= form.label :pending, style: "display: block" %>
+    <%= form.check_box :pending %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.label :role, style: "display: block" %>
+    <%= form.radio_button :role, value: :basic, checked: user.role == 'basic' %> basic
+    <%= form.radio_button :role, value: :admin, checked: user.role == 'admin' %> admin
   </div>
+
+  <p>
+    <%= form.submit %>
+  </p>
 <% end %>

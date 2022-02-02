@@ -5,13 +5,13 @@ class ApplicationController < ActionController::Base
 
   def load_current_user
     if session[:userinfo].present?
-      Current.user = User.find_by(email: session[:userinfo]['name'])
+      Current.user = User.find_or_create_by(email: session[:userinfo]['name'])
     end
   end
 
   def require_logged_in
-    unless Current.user.present?
-      flash.alert = "User account with this email not found. You must contact Jonathan to set you up."
+    unless Current.user.present? && Current.user.active?
+      flash.alert = "Your account is pending. Please contact Jonathan to have your account activated."
       redirect_to '/'
     end
   end

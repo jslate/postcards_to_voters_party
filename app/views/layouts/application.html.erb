@@ -10,21 +10,22 @@
   </head>
 
   <body>
+    <% if Current.user.present? %>
+      <div style="text-align: right">
+        <% if Current.user&.admin? %>
+          <%= link_to 'Admin Dashboard', dashboard_path, method: :get %>
+        <% end %>
+        <%= link_to 'Logout', '/auth/logout', method: :get %>
+      </div>
+    <% end %>
+
     <% flash.each do |type, msg| %>
-      <div style="color: red">
+      <div class="flash <%= type %>">
         <%= msg %>
       </div>
     <% end %>
     <%= yield %>
 
-    <p class="menu">
-      <% if Current.user.present? %>
-        <%= link_to 'Dashboard', dashboard_path, method: :get %>
-        <%= link_to 'Logout', '/auth/logout', method: :get %>
-      <% else %>
-        <%= button_to 'Login', '/auth/auth0', method: :post %>
-      <% end %>
-    </p>
     <%= javascript_include_tag :application %>
   </body>
 </html>

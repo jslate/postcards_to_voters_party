@@ -1,17 +1,13 @@
-<h1>Dashboard</h1>
-
-<ul>
-  <li><%= link_to 'Get a new address', next_addresses_path %></li>
-</ul>
-
-<h2>Admin Only</h2>
-
 <% if Current.user.admin? %>
+  <h1>Admin Dashboard</h1>
   <ul>
     <li><%= link_to 'Manage Users', users_path %></li>
     <li><%= link_to 'Manage Campaigns', campaigns_path %></li>
     <li><%= link_to 'Bulk Add Addresses', add_from_text_addresses_path %></li>
     <li><%= link_to 'Manage Addresses', addresses_path %></li>
   </ul>
+<% else %>
+  <p>How did you end up here, you aren't an admin... 😕</p>
 
+  <p><%= link_to 'Go to the main page', root_path %></p>
 <% end %>
