@@ -23,7 +23,7 @@ class AddressesController < ApplicationController
         status: :in_use,
         in_use_user: Current.user,
       )
-      redirect_to address_path(@address)
+      # redirect_to address_path(@address)
     else
       redirect_to none_left_addresses_path
     end
@@ -112,6 +112,6 @@ class AddressesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def address_params
-      params.fetch(:address, {}).permit(:address)
+      params.fetch(:address, {}).permit(:address, :status)
     end
 end

@@ -13,6 +13,7 @@
     <% if Current.user.present? %>
       <div style="text-align: right">
         <% if Current.user&.admin? %>
+          <%= link_to 'Home', root_path, method: :get %>
           <%= link_to 'Admin Dashboard', dashboard_path, method: :get %>
         <% end %>
         <%= link_to 'Logout', '/auth/logout', method: :get %>

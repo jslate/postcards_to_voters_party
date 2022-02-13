@@ -1,9 +1,9 @@
-<%= form_with(model: user) do |form| %>
+<%= semantic_form_for @user do |f| %>
   <% if user.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <div style="margin: 20px 0" class="inline-errors">
+      <p><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</p>
 
-      <ul>
+      <ul style="display: none">
         <% user.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
@@ -11,23 +11,8 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div>
-    <%= form.label :pending, style: "display: block" %>
-    <%= form.check_box :pending %>
-  </div>
-
-  <div>
-    <%= form.label :role, style: "display: block" %>
-    <%= form.radio_button :role, value: :basic, checked: user.role == 'basic' %> basic
-    <%= form.radio_button :role, value: :admin, checked: user.role == 'admin' %> admin
-  </div>
-
-  <p>
-    <%= form.submit %>
-  </p>
+  <%= f.input :email %>
+  <%= f.input :role, as: :radio, collection: ['basic', 'admin'] %>
+  <%= f.input :pending, as: :boolean %>
+  <%= f.actions %>
 <% end %>

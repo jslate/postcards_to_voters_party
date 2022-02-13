@@ -5,7 +5,12 @@
 <table>
   <thead>
     <tr>
-      <th colspan="4"></th>
+      <th>Address</th>
+      <th>Campaign</th>
+      <th>Status</th>
+      <th>Assigned to</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -13,6 +18,9 @@
     <% @addresses.each do |address| %>
       <tr>
         <td><%= address.address %></td>
+        <td><%= address.campaign.name %></td>
+        <td><%= address.status %></td>
+        <td><%= address.in_use_user&.email %></td>
         <td><%= link_to 'Show', address %></td>
         <td><%= link_to 'Edit', edit_address_path(address) %></td>
       </tr>

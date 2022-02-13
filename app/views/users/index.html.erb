@@ -2,12 +2,26 @@
 
 <h1>Users</h1>
 
-<div id="users">
+<table id="users">
+  <tr>
+    <th>Email</th>
+    <th>Role</th>
+    <th>Pending?</th>
+    <th></th>
+    <th></th>
+  </tr>
   <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
-    <hr />
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.role %></td>
+      <td><%= user.pending? ? 'pending' : '' %></td>
+      <td><%= link_to "show", user %></td>
+      <td><%= link_to "delete", user, method: :delete %></td>
+    </tr>
   <% end %>
-</div>
+</table>
+
+<p style="margin-top: 50px">Non-pending user emails:<p>
+<textarea readonly="readonly"><%= User.where(pending: false).pluck(:email).join(', ') %></textarea>
+
+<p><%= link_to('Create user', new_user_path) %>
